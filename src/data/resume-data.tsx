@@ -46,7 +46,7 @@ export const RESUME_DATA = {
       },
       {
         name: "Resume",
-        url: process.env.NEXT_PUBLIC_RESUME_URL,
+        url: "https://drive.google.com/drive/folders/1BsKGORYXbny-pCOCeVAD2VVV_bBSuGaY?usp=sharing",
         icon: ResumeIcon,
       },
     ],
