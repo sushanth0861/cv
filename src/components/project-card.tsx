@@ -4,26 +4,40 @@ import {
   CardContent,
   CardDescription,
   CardTitle,
-} from "./ui/card";
-import { Badge } from "./ui/badge";
+} from "./ui/card"
+import { Badge } from "./ui/badge"
+import { Github } from "lucide-react"
 
 interface Props {
-  title: string;
-  description: string;
-  tags: readonly string[];
-  link?: string;
+  title: string
+  description: string
+  tags: readonly string[]
+  link?: string
+  githubUrl?: string
 }
 
-export function ProjectCard({ title, description, tags, link }: Props) {
+export function ProjectCard({ title, description, tags, link, githubUrl }: Props) {
   return (
     <Card className="flex flex-col overflow-hidden border border-muted p-3">
       <CardHeader className="">
         <div className="space-y-1">
-          <CardTitle className="text-base">
+          <CardTitle className="text-base flex items-center gap-2">
+          {githubUrl && (
+              <a
+                href={githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary"
+                aria-label="View on GitHub"
+              >
+                <Github size={16} />
+              </a>
+            )}
             {link ? (
               <a
                 href={link}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 hover:underline"
               >
                 {title}{" "}
@@ -55,5 +69,5 @@ export function ProjectCard({ title, description, tags, link }: Props) {
         </div>
       </CardContent>
     </Card>
-  );
+  )
 }

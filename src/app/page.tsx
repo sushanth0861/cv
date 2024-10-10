@@ -132,7 +132,11 @@ export default function Page() {
                   </h4>
                 </CardHeader>
                 <CardContent className="mt-2 text-xs print:text-[10px]">
-                  {work.description}
+                  <ul>
+                    {work.description.map((point, index) => (
+                      <li key={index}>{point}</li>
+                    ))}
+                  </ul>
                 </CardContent>
               </Card>
             );
@@ -184,6 +188,7 @@ export default function Page() {
                   description={project.description}
                   tags={project.techStack}
                   link={"link" in project ? project.link.href : undefined}
+                  githubUrl={"link" in project ? project.link.githubUrl : undefined}
                 />
               );
             })}
@@ -198,7 +203,7 @@ export default function Page() {
             title: "Personal Website",
           },
           ...RESUME_DATA.contact.social.map((socialMediaLink) => ({
-            url: socialMediaLink.url,
+            url: socialMediaLink.url || '',
             title: socialMediaLink.name,
           })),
         ]}
